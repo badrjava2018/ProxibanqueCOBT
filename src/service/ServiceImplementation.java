@@ -1,51 +1,58 @@
 package service;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
-
+import exception.MyBusinessException;
+import model.Client;
+import persistence.CustomerDao;
+import persistence.CustomerDaoImpl;
 
 public class ServiceImplementation implements ClientService {
 
+	CustomerDao dao = new CustomerDaoImpl();
+
 	@Override
-	public void addClient(Client c) {
-		// TODO Auto-generated method stub
-		
+	public Client findClientById(int id) throws MyBusinessException {
+
+		return dao.findById(id);
 	}
 
 	@Override
-	public Client findClientById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public void addClient(Client c) throws MyBusinessException {
+		if (c == null) {
+			throw new MyBusinessException("Customer ne doit pas etre null!");
+
+		} else {
+			dao.create(c);
+		}
 	}
 
 	@Override
-	public List<Client> getAllClient() {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateClient(Client c) throws MyBusinessException {
+		if (c == null) {
+			throw new MyBusinessException("Customer ne doit pas etre null!");
+
+		} else {
+			dao.update(c);
+		}
+
 	}
 
 	@Override
-	public void updateClient(Client c) {
-		// TODO Auto-generated method stub
-		
+	public void deleteClient(Client c) throws MyBusinessException {
+		if (c == null) {
+			throw new MyBusinessException("Customer ne doit pas etre null!");
+
+		} else {
+			dao.delete(c);
+		}
+
 	}
 
 	@Override
-	public void deleteClientbyId(Integer id) {
-		// TODO Auto-generated method stub
-		
+	public List<Client> getAllClient() throws MyBusinessException {
+
+		return dao.getAll();
 	}
-
-	@Override
-	public void faireVirement(CompteBancaire cmptBancaire1, CompteBancaire cmptBancaire2, double montant) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-
 
 }

@@ -1,23 +1,46 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Client {
 
-	private String nom;
-	private String prenom;
-	private String adresse;
-	private String email;
 	private Integer idClient;
+	private String prenom;
+	private String nom;
+	private String email;
+	private String adresse;
+	private Double soldeCompteCourant;
+	private Double soldeCompteEpargne;
+	
 
-	private List<CompteBancaire> comptesClient = new ArrayList<>();
 
+
+	
+	
+	public Client(String prenom, String nom, String email, String adresse, Double soldeCompteCourant,
+			Double soldeCompteEpargne) {
+		super();
+		this.prenom = prenom;
+		this.nom = nom;
+		this.email = email;
+		this.adresse = adresse;
+		this.soldeCompteCourant = soldeCompteCourant;
+		this.soldeCompteEpargne = soldeCompteEpargne;
+	}
+
+
+
+	public Client() {
+		super();
+	}
+
+	
+	
 	public Client(String nom, String prenom) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
-		setIdClient(10000 + (int) (Math.random() * 10000)); // alea entre 10000 et 20000
+
 
 	}
 
@@ -61,18 +84,31 @@ public class Client {
 		this.idClient = idClient;
 	}
 
-	public List<CompteBancaire> getComptesClient() {
-		return comptesClient;
-	}
 
-	public void setComptesClient(List<CompteBancaire> comptesClient) {
-		this.comptesClient = comptesClient;
-	}
 
 	@Override
 	public String toString() {
 		return "Client [nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", email=" + email + "]";
 	}
+
+	public Double getSoldeCompteCourant() {
+		return soldeCompteCourant;
+	}
+
+	public void setSoldeCompteCourant(Double soldeCompteCourant) {
+		this.soldeCompteCourant = soldeCompteCourant;
+	}
+
+	public Double getSoldeCompteEpargne() {
+		return soldeCompteEpargne;
+	}
+
+	public void setSoldeCompteEpargne(Double soldeCompteEpargne) {
+		this.soldeCompteEpargne = soldeCompteEpargne;
+	}
+
+
+
 
 	
 

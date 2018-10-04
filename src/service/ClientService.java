@@ -2,21 +2,21 @@ package service;
 
 import java.util.List;
 
+import exception.MyBusinessException;
 import model.Client;
-import model.CompteBancaire;
 
 public interface ClientService {
 
-	void addClient(Client c);
+	Client findClientById(int id) throws MyBusinessException;
 
-	Client findClientById(Integer id);
+	void addClient(Client c) throws MyBusinessException;
 
-	List<Client> getAllClient();
+	void updateClient(Client c) throws MyBusinessException;
 
-	void updateClient(Client c);
+	void deleteClient(Client c) throws MyBusinessException;
 
-	void deleteClientbyId(Integer id);
+	List<Client> getAllClient() throws MyBusinessException;
 
-	void faireVirement(CompteBancaire cmptBancaire1, CompteBancaire cmptBancaire2, double montant);
+//	void faireVirement(CompteBancaire cmptBancaire1, CompteBancaire cmptBancaire2, double montant);
 
 }

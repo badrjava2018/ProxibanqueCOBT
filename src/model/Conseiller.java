@@ -5,9 +5,13 @@ import java.util.List;
 
 public class Conseiller {
 
+	private Integer idConseiller;
 	private String nom;
 	private String prenom;
-	private Integer idConseiller;
+	private String login;
+	private String password;
+	
+	
 
 	private List<Client> listClient = new ArrayList<>();
 
@@ -55,6 +59,22 @@ public class Conseiller {
 	@Override
 	public String toString() {
 		return "Conseiller [nom=" + nom + ", prenom=" + prenom + ", idConseiller=" + idConseiller + "]";
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

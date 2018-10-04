@@ -29,9 +29,7 @@ public abstract class AbstractDaoJdbc {
 	}
 
 	
-	
-	
-	// TO DO : Mettre le bon url
+	// TO DO : Mettre le bon url : OK
 	
 	
 	public Connection getConnectionDM() throws ClassNotFoundException, SQLException {
@@ -39,7 +37,7 @@ public abstract class AbstractDaoJdbc {
 		// etablir la connexion
 		Class.forName("com.mysql.jdbc.Driver");
 
-		String url = "jdbc:mysql://localhost/temp";
+		String url = "jdbc:mysql://localhost/proxibanquecobt";
 		String username = "root";
 		String password = "";
 
