@@ -1,6 +1,11 @@
 package model;
 
-
+/**
+ * 
+ * @author Adminl
+ *Classe qui nous permet d'avoir tous les getters et les setters pour les information du client, les attribus correspondent à ceux de la BDD MySQL
+ *
+ */
 
 public class Client {
 
@@ -9,16 +14,16 @@ public class Client {
 	private String nom;
 	private String email;
 	private String adresse;
-	private Double soldeCompteCourant;
-	private Double soldeCompteEpargne;
+	private double soldeCompteCourant;
+	private double soldeCompteEpargne;
 	
 
 
 
 	
 	
-	public Client(String prenom, String nom, String email, String adresse, Double soldeCompteCourant,
-			Double soldeCompteEpargne) {
+	public Client(String prenom, String nom, String email, String adresse, double soldeCompteCourant,
+			double soldeCompteEpargne) {
 		super();
 		this.prenom = prenom;
 		this.nom = nom;
@@ -26,6 +31,13 @@ public class Client {
 		this.adresse = adresse;
 		this.soldeCompteCourant = soldeCompteCourant;
 		this.soldeCompteEpargne = soldeCompteEpargne;
+	}
+
+
+
+	public Client(Integer idClient) {
+		super();
+		this.idClient = idClient;
 	}
 
 
@@ -95,15 +107,15 @@ public class Client {
 		return soldeCompteCourant;
 	}
 
-	public void setSoldeCompteCourant(Double soldeCompteCourant) {
+	public void setSoldeCompteCourant(double soldeCompteCourant) {
 		this.soldeCompteCourant = soldeCompteCourant;
 	}
 
-	public Double getSoldeCompteEpargne() {
+	public double getSoldeCompteEpargne() {
 		return soldeCompteEpargne;
 	}
 
-	public void setSoldeCompteEpargne(Double soldeCompteEpargne) {
+	public void setSoldeCompteEpargne(double soldeCompteEpargne) {
 		this.soldeCompteEpargne = soldeCompteEpargne;
 	}
 

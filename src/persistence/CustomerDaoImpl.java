@@ -9,7 +9,13 @@ import java.util.List;
 
 import exception.MyBusinessException;
 import model.Client;
-
+/**
+ * 
+ * @author Adminl
+ *
+ *Classe d'implementation des methodes de la CustomerDao qui etant la classe abstraite AbstractDaoJdbc
+ *
+ */
 public class CustomerDaoImpl extends AbstractDaoJdbc implements CustomerDao {
 
 	// Find by id OK
@@ -210,8 +216,11 @@ public class CustomerDaoImpl extends AbstractDaoJdbc implements CustomerDao {
 		return maListe;
 	}
 
+
+
 	@Override
-	public int faireVirement(Client cmptBancaire1, Client cmptBancaire2, double montant) throws MyBusinessException {
+	public int faireVirementAjout(Client c, double montant) throws MyBusinessException {
+		
 		Connection cn = null;
 		PreparedStatement st = null;
 		int result = -1;
@@ -221,26 +230,14 @@ public class CustomerDaoImpl extends AbstractDaoJdbc implements CustomerDao {
 			cn = getConnectionDM();
 			String sql = "update client set soldeCompteCourant = ? where idClient = ?";
 
+			
 			st = cn.prepareStatement(sql);
-			st.setDouble(1, cmptBancaire1.getSoldeCompteCourant());
-//			st.setDouble(2, cmptBancaire1.getSoldeCompteEpargne());
-			st.setInt(2, cmptBancaire1.getIdClient());
-			st.setDouble(1, cmptBancaire2.getSoldeCompteCourant());
-//			st.setDouble(2, cmptBancaire2.getSoldeCompteEpargne());
-			st.setInt(2, cmptBancaire2.getIdClient());
-
-		
+			st.setDouble(1, c.getSoldeCompteCourant() + montant);
+			st.setInt(2, c.getIdClient());
 			
 
-			if (cmptBancaire1.getSoldeCompteCourant() >= montant) {
-				cmptBancaire2.setSoldeCompteCourant(cmptBancaire2.getSoldeCompteCourant() + montant);
-				cmptBancaire1.setSoldeCompteCourant(cmptBancaire1.getSoldeCompteCourant() - montant);
-				result = st.executeUpdate();
-				cn.commit();
-				
-				
-			} else
-				System.out.println("Le virement ne peut pas être effectué");
+			result = st.executeUpdate();
+			cn.commit();
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -252,13 +249,49 @@ public class CustomerDaoImpl extends AbstractDaoJdbc implements CustomerDao {
 				e.printStackTrace();
 			}
 			throw new MyBusinessException(
-					"Echec de l'update de l'utilisateur : " + cmptBancaire1 + "et " + cmptBancaire2 + e);
+					"Echec de l'update de l'utilisateur : ");
 		} finally {
 			close(cn, st, null);
 		}
 		return result;
 		
+	}
 
+	@Override
+	public int faireVirementRetrait(Client c, double montant) throws MyBusinessException {
+		Connection cn = null;
+		PreparedStatement st = null;
+		int result = -1;
+
+		try {
+			
+			cn = getConnectionDM();
+			String sql = "update client set soldeCompteCourant = ? where idClient = ?";
+
+			
+			st = cn.prepareStatement(sql);
+			st.setDouble(1, c.getSoldeCompteCourant() - montant);
+			st.setInt(2, c.getIdClient());
+			
+
+			result = st.executeUpdate();
+			cn.commit();
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+
+			try {
+				if (cn != null)
+					cn.rollback();
+			} catch (SQLException e1) {
+				e.printStackTrace();
+			}
+			throw new MyBusinessException(
+					"Echec de l'update de l'utilisateur : ");
+		} finally {
+			close(cn, st, null);
+		}
+		return result;
 	}
 
 }

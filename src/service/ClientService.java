@@ -17,6 +17,6 @@ public interface ClientService {
 
 	List<Client> getAllClient() throws MyBusinessException;
 
-//	void faireVirement(CompteBancaire cmptBancaire1, CompteBancaire cmptBancaire2, double montant);
+	void faireVirementCompteCourant(Client c1, Client c2, double montant) throws MyBusinessException;
 
 }

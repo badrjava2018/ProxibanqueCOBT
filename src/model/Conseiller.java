@@ -1,8 +1,10 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * 
+ * @author Adminl
+ *Classe Conseiller, creer dans le cas où ont souhaite creer une base de données pour les Conseiller et leur donner un login et mot de passe différent
+ */
 public class Conseiller {
 
 	private Integer idConseiller;
@@ -13,15 +15,11 @@ public class Conseiller {
 	
 	
 
-	private List<Client> listClient = new ArrayList<>();
 
 	public Conseiller(String nom, String prenom) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
-		// this.idConseiller = 2000;
-		// this.setIdConseiller(2000);
-
 	}
 
 	public String getNom() {
@@ -48,13 +46,6 @@ public class Conseiller {
 		this.idConseiller = idConseiller;
 	}
 
-	public List<Client> getListClient() {
-		return listClient;
-	}
-
-	public void setListClient(List<Client> listClient) {
-		this.listClient = listClient;
-	}
 
 	@Override
 	public String toString() {

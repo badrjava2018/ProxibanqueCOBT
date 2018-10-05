@@ -1,0 +1,19 @@
+
+body {
+	font-family : "Verdana";
+}
+
+th {
+	background-color: #0080ff;
+	color: white;
+	
+}
+
+tr:nth-child(even) {
+	background-color: #82c0ff;
+	
+}
+
+h2 {
+	color: #004080;
+}

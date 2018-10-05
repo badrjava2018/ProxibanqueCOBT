@@ -46,10 +46,16 @@ public class MainTest {
 //		dao.faireVirement(dao.findById(3), dao.findById(6), 2500);
 		
 		
-		Client c7 = new Client("Erica", "Baggi","ebaggi@gmail.com","25 rue alforville",15512.10,4455.35);
-		impl.addClient(c7);
-		
-		
+//		Client c7 = new Client("Erica", "Baggi","ebaggi@gmail.com","25 rue alforville",15512.10,4455.35);
+//		impl.addClient(c7);
+////		
+//		Client c8 = dao.findById(1);
+//		
+////		dao.faireVirement(c8, 2000.0);
+//		
+//		Client c9 = dao.findById(3);
+//		
+//		impl.faireVirementCompteCourant(c8, c9, 4000);
 		
 	}
 

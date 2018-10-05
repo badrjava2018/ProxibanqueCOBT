@@ -55,4 +55,20 @@ public class ServiceImplementation implements ClientService {
 		return dao.getAll();
 	}
 
+	@Override
+	public void faireVirementCompteCourant(Client c1, Client c2, double montant) throws MyBusinessException {
+		
+		
+		
+		if (c1.getSoldeCompteCourant() >= montant) {
+			dao.faireVirementAjout(c2, montant);
+			dao.faireVirementRetrait(c1, montant);
+		
+		
+	}else
+		System.out.println("Le virement ne peut pas être effectué");
+	}
+	
+	
+
 }

@@ -17,6 +17,8 @@ public interface CustomerDao {
 	
 	List<Client> getAll() throws MyBusinessException;
 	
-	int faireVirement(Client cmptBancaire1, Client cmptBancaire2, double montant) throws MyBusinessException;
+	int faireVirementAjout(Client c, double montant) throws MyBusinessException;
+	
+	int faireVirementRetrait(Client c, double montant) throws MyBusinessException;
 
 }

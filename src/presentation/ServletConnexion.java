@@ -30,20 +30,14 @@ public class ServletConnexion extends HttpServlet {
 
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -66,27 +60,9 @@ public class ServletConnexion extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+//		response.sendRedirect("accueil.jsp");
 		
-	
-//		try {
-//			Client cli = impl.findClientById(id);
-//			maSession.setAttribute("CleClient", cli);
-//		} catch (MyBusinessException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-		
-//		try {
-//			int id = 1;
-//			Client cli = impl.findClientById(id);
-//			maSession.setAttribute("CleClient", cli);
-//			
-//		} catch (MyBusinessException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
+		// TODO : remettre l'acces avec mot de passe ci dessous
 		
 
 		if (("admin".equalsIgnoreCase(login)) && ("2018".equalsIgnoreCase(pwd))) {
@@ -95,10 +71,10 @@ public class ServletConnexion extends HttpServlet {
 
 		} else {
 
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("loginErreur.jsp");
 		}
 
-//		doGet(request, response);
+		doGet(request, response);
 	}
 
 }
